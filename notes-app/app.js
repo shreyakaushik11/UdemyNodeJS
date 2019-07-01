@@ -22,7 +22,7 @@
 
 // const firstName = require('./utils.js');
 // const add = require('./utils.js');
-// const getNotes = require('./notes.js');
+const notes = require('./notes.js');
 // console.log("name of the file will be printed first");
 // console.log(firstName); //mike will appear 
 // console.log(add(4,6));
@@ -41,10 +41,15 @@ yargs.command({
             describe : 'Note title',
             demandOption : true,
             type : 'string'
+        },
+        body : {
+            describe : 'Note Body',
+            demandOption : true,
+            type : 'string'
         }
     },
     handler : function(argv){
-        console.log("Adding a new note", argv)
+        notes.addNote(argv.title, argv.body)
     }
 })
 
@@ -53,8 +58,15 @@ yargs.command({
 yargs.command({
     command : 'remove',
     describe : 'remove an existing note',
-    handler : function(){
-        console.log("removed a note")
+    builder : {
+        title : {
+            describe : 'Note title',
+            demandOption : true,
+            type : 'string'
+        }
+    },
+    handler : function(argv){
+        notes.removeNote(argv.title)
     }
 })
 
