@@ -37,13 +37,26 @@ app.get('/about', (req, res)=>{
 })
 
 app.get('/weather', (req, res)=>{
+    if(!req.query.address){
+        return res.send({
+            error: "there is an error"
+        })
+    }
     res.send([{
         forecast: {
             longitude : -78,
             latitude : 40
         },
-        location : 'New Delhi'
+        location : req.query.address
     }])
+})
+
+app.get('/help/*', (req, res)=>{
+    res.send("Help page not found")
+})
+
+app.get('*', (req, res)=>{
+    res.send("Page not found")
 })
 
 app.listen(3000, ()=>{       //3000 is the port number
