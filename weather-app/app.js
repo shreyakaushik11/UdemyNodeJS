@@ -13,7 +13,7 @@ if(!location){
         if(error){
             console.log(error)
         }
-        forecast(data.Latitude, data.Longitude, (error, forecastData)=>{
+        forecast(data.latitude, data.longitude, (error, forecastData)=>{
             if(error){
                return console.log(error)
             }
