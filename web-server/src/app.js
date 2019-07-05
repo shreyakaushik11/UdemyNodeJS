@@ -9,6 +9,8 @@ console.log(__dirname)
 console.log(__filename)
 // console.log(path.join(__dirname, '../public/'))
 
+const port = process.env.PORT || 3000
+
 const route = path.join(__dirname, '../public/')
 const viewsPath =  path.join(__dirname, '../src/templates/views')
 const partialsPath = path.join(__dirname, '../src/templates/partials')
@@ -72,6 +74,6 @@ app.get('*', (req, res)=>{
     res.send("Page not found")
 })
 
-app.listen(3000, ()=>{       //3000 is the port number
+app.listen(port, ()=>{       //3000 is the port number
     console.log("Server is running")
 })
